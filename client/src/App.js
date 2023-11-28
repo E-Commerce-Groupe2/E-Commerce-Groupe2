@@ -8,7 +8,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<Log />} />
+          <Route path='/register' element={<Log />} />
         </Routes>
       </Router>
     </>
