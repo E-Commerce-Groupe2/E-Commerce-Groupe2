@@ -1,15 +1,29 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./styles.css";
-import Log from "./component/signup";
+import React, { useState } from "react"
+import "./App.css"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Header from "./common/header/Header"
+import Pages from "./pages/Pages"
+import Footer from "./common/footer/Footer"
+
 
 function App() {
+  const [CartItem, setCartItem] = useState([])
+
+ 
+
+  
+
   return (
     <>
       <Router>
-        <Routes>
-          <Route path='/' element={<Log />} />
-        </Routes>
+      <Header CartItem={CartItem} />
+        <Switch>
+          <Route path='/' exact>
+            <Pages />
+          </Route>
+        
+        </Switch>
+        <Footer />
       </Router>
     </>
   );
