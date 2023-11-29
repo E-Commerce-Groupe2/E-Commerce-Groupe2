@@ -1,32 +1,25 @@
-import React, { useState } from "react"
-import "./App.css"
+import React ,{useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./common/header/Header"
-import Pages from "./pages/Pages"
-import Footer from "./common/footer/Footer"
+import "./App.css";
 import Log from "./component/signup";
 import ProfilePage from "./component/ProfilePage";
-
+import Header from "./common/header/Header.jsx";
+import Footer from "./common/footer/Footer.jsx";
+import Pages from "./pages/Pages.jsx";
 function App() {
   const [CartItem, setCartItem] = useState([])
-
- 
-
-  
 
   return (
     <>
       <Router>
-
-        <Routes>
-          <Route path='/' element={<Log />} />
-          <Route path='/Profile' element={<ProfilePage />} />
-        </Routes>
-
       <Header CartItem={CartItem} />
-    
-            <Pages />
-          
+        <Routes>
+        <Route path='/'  />
+          <Route path='/register' element={<Log />} />
+          <Route path='/Profile' element={<ProfilePage />} />
+        </Routes> 
+        <Pages/>
+        
         <Footer />
       </Router>
     </>
