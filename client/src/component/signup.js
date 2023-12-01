@@ -1,6 +1,7 @@
 import React, { useState} from "react"
 import * as Components from "../Components";
 import axios from "axios";
+
 function Log() {
   const [signIn, toggle] = React.useState(true);
   const [username, setUsername] = useState("")
@@ -24,6 +25,24 @@ function Log() {
       setError(true)
     }
   }
+  const handleSubmit2 = async (e) => {
+    e.preventDefault()
+    setError(false)
+    console.log({ username, email, password });
+    try {
+      const res = await axios.post("http://localhost:3000/api/auth/register", {
+        username,
+        email,
+        password,
+     
+        
+      })
+    res.data && window.location.replace("/")
+    } catch (error) {
+      setError(true)
+    }
+  }
+  
   return (
     <Components.Container>
       <Components.SignUpContainer signinIn={signIn}>
@@ -37,10 +56,10 @@ function Log() {
       
       </Components.SignUpContainer>
       <Components.SignInContainer signinIn={signIn}>
-        <Components.Form>
+        <Components.Form onSubmit={handleSubmit2}>
           <Components.Title>Sign in</Components.Title>
-          <Components.Input type="email" placeholder="Email" />
-          <Components.Input type="password" placeholder="Password" />
+          <Components.Input type="email" required onChange={(e) => setEmail(e.target.value)} placeholder="Email"  />
+          <Components.Input type="password"  required onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
           <Components.Anchor href="#">Forgot your password?</Components.Anchor>
           <Components.Button>Sigin In</Components.Button>
         </Components.Form>

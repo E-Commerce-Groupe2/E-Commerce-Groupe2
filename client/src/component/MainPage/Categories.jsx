@@ -4,7 +4,7 @@ const Categories = () => {
   const data = [
     {
       cateImg: "./images/category/phones.png",
-      cateName: "Fhones",
+      cateName: "Phones",
     },
     {
       cateImg: "./images/category/pc.png",

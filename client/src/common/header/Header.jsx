@@ -10,6 +10,7 @@ const Header = ({ CartItem }) => {
       
       <Search CartItem={CartItem} />
       <Navbar />
+      
     </div>
   )
 }
