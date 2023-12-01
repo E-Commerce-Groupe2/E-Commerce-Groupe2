@@ -44,7 +44,7 @@ function Log() {
   }
   
   return (
-    <Components.Container>
+    <Components.Container className="register">
       <Components.SignUpContainer signinIn={signIn}>
         <Components.Form  onSubmit={handleSubmit}>
           <Components.Title>Create Account</Components.Title>

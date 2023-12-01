@@ -9,6 +9,8 @@ overflow: hidden;
 width: 678px;
 max-width: 100%;
 min-height: 400px;
+margin-left:600px;
+  text-align: center;
 `;
 
 export const SignUpContainer = styled.div`
@@ -20,10 +22,13 @@ export const SignUpContainer = styled.div`
  width: 50%;
  opacity: 0;
  z-index: 1;
+ alignItems: 'center';
+ justifyContent: 'center';
  ${props => props.signinIn !== true ? `
    transform: translateX(100%);
    opacity: 1;
    z-index: 5;
+  
  ` 
  : null}
 `;
@@ -37,6 +42,8 @@ transition: all 0.6s ease-in-out;
 left: 0;
 width: 50%;
 z-index: 2;
+alignItems: 'center';
+  justifyContent: 'center';
 ${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)}
 `;
 
@@ -67,9 +74,9 @@ width: 100%;
 
 export const Button = styled.button`
    border-radius: 20px;
-   border: 1px solid #44b3c7;
-   background-color: #44b3c7;
-   color: #ffffff;
+   border: 1px solid #cdc8fa;
+   background-color: #cdc8fa;
+   color: #000000;
    font-size: 12px;
    font-weight: bold;
    padding: 12px 45px;
@@ -85,7 +92,7 @@ export const Button = styled.button`
 `;
 export const GhostButton = styled(Button)`
 background-color: transparent;
-border-color: #ffffff;
+border-color: #000000;
 `;
 
 export const Anchor = styled.a`
@@ -108,13 +115,13 @@ ${props =>
 `;
 
 export const Overlay = styled.div`
-background:#81ced6;
-background: -webkit-linear-gradient(to right, #81ced6);
-background: linear-gradient(to right, #81ced6);
+background:#cdc8fa;
+background: -webkit-linear-gradient(to right, #cdc8fa);
+background: linear-gradient(to right, #cdc8fa);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: 0 0;
-color: #ffffff;
+color: #000000;
 position: relative;
 left: -100%;
 height: 100%;
