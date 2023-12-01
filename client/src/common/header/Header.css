@@ -46,13 +46,13 @@
 
 .search .cart span {
   position: absolute;
-  top: -10px;
-  right: 0px;
+  top: 20px;
+  right: 70px;
   width: 20px;
   height: 1Opx;
   border-radius: 50%;
   text-align: center;
-  background-color: rgb(255, 90, 1);
+  background-color: rgb(239,102,5);
   font-size: 12px;
   color: #cdc8fa;
 }
