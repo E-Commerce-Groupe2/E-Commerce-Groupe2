@@ -9,7 +9,7 @@ overflow: hidden;
 width: 678px;
 max-width: 100%;
 min-height: 400px;
-margin-left:600px;
+margin-left:425px;
   text-align: center;
 `;
 
