@@ -9,6 +9,7 @@ import Pages from "./pages/Pages.jsx";
 import Cart from "./common/Cart/Cart";
 import Sdata from "./component/shops/Sdata";
 import Data from "./component/Data";
+import AddProductPage from "./component/Addproducts.js";
 
 function App() {
   const { productItems } = Data;
@@ -58,6 +59,7 @@ function App() {
           />
           <Route path="/register" element={<Log />} />
           <Route path="/Profile" element={<ProfilePage />} />
+          <Route path="/addProduct" element={<AddProductPage />} />
           <Route
             path="/cart"
             element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} />}

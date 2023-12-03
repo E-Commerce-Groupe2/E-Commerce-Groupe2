@@ -17,7 +17,7 @@ require('./model/DBsync');
 require('./routes/users')(app);
 require('./routes/posts')(app);
 require('./routes/categories')(app);
-
+require('./routes/products')(app);
 
 // run server
 app.listen(PORT, () => console.log(`Server is running on PORT: ${PORT}`));
