@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
+import { Paper } from '@material-ui/core';
+
+
+const StyledPaper = styled(Paper)`
+  display: flex;
+  align-items: top;
+  padding: 60px;
+  background-color: #faece3 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin-top: 20px;
+`;
+
 
 const EditProfile = ({ userData, onUpdateProfile, onClose }) => {
   const [editedUserData, setEditedUserData] = useState({ ...userData });
@@ -28,17 +42,20 @@ const EditProfile = ({ userData, onUpdateProfile, onClose }) => {
 
   return (
     <div>
+       <StyledPaper>
       <TextField label="Username" name="username" value={editedUserData.username} onChange={handleChange} />
       <TextField label="Email" name="email" value={editedUserData.email} onChange={handleChange} />
 
    
 
-      <Button variant="contained" color="primary" onClick={handleUpdate}>
-        Update Profile
+      <Button style={{ backgroundColor: "#ff6f08", color: "white" }} onClick={handleUpdate}>
+      Update Profile
       </Button>
-      <Button variant="contained" color="default" onClick={onClose}>
-        Cancel
-      </Button>
+
+      <Button style={{ backgroundColor: "red", color: "white" }} onClick={onClose}>
+       Cancel
+       </Button>
+       </StyledPaper>
     </div>
   );
 };

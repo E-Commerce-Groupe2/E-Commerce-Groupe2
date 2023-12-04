@@ -8,9 +8,11 @@ position: relative;
 overflow: hidden;
 width: 678px;
 max-width: 100%;
+margin-top: 30px;
 min-height: 400px;
-margin-left:425px;
+margin-left:450px;
   text-align: center;
+  margin-bottom: 30px; 
 `;
 
 export const SignUpContainer = styled.div`

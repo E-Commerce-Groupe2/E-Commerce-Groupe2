@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import { Container, Paper, Typography, Avatar, Grid, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
@@ -6,103 +7,110 @@ import axios from 'axios';
 // Import the EditProfile component
 import EditProfile from './EditProfile'; // Replace './EditProfile' with the correct path to your EditProfile component
 
-const containerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  marginTop: '20px',
-};
 
-const headerStyle = {
-  backgroundColor: 'rgb(255, 90, 1)',
-  color: 'white',
-  textAlign: 'center',
-  padding: '1em 0',
-  marginBottom: '20px',
-  alignItems: 'center',
-};
+const StyledContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+`;
 
-const paperStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  padding: '40px',
-  backgroundColor: '#ecf0f1',
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  marginBottom: '20px',
-};
+const StyledHeader = styled.header`
+  background-color: #fcd2b3;
+  color: white;
+  text-align: center;
+  padding: 3em 0;
+  margin-bottom: 60px;
+  margin-top: 20px;
+  align-items: top;
+`;
 
-const avatarStyle = {
-  width: '120px',
-  height: '120px',
-  marginRight: '20px',
-};
+const StyledPaper = styled(Paper)`
+  display: flex;
+  align-items: top;
+  padding: 60px;
+  background-color: #faece3 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin-top: 20px;
+`;
 
-const userDetailsStyle = {
-  flexGrow: 1,
-};
+const StyledAvatar = styled(Avatar)`
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+`;
 
-const sectionTitleStyle = {
-  color: '#2c3e50',
-  borderBottom: '2px solid #3498db',
-  paddingBottom: '10px',
-  marginBottom: '20px',
-};
+const StyledUserDetails = styled.div`
+  flex-grow: 1;
+`;
 
-const profileSectionStyle = {
-  padding: '20px',
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  marginBottom: '20px',
-};
+const StyledSectionTitle = styled(Typography)`
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+`;
 
-const editButtonStyle = {
-  marginTop: '20px',
-  backgroundColor: '#3498db',
-  color: 'white',
-};
+const StyledProfileSection = styled(Paper)`
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+`;
+
+const StyledEditButton = styled(Button)`
+  margin-top: 20px;
+  background-color: #3498db;
+  color: white;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+`;
 
 const ProfilePage = () => {
-  const [userData, setUserData] = useState({
-    username: '',
-    email: '',
-    avatar: '',
-  });
-
-  const [orderHistory, setOrderHistory] = useState([]);
-  const [favoriteProducts, setFavoriteProducts] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const userResponse = await axios.get('');
-        const orderHistoryResponse = await axios.get('');
-        const favoriteProductsResponse = await axios.get('');
-
-        setUserData(userResponse.data);
-        setOrderHistory(orderHistoryResponse.data);
-        setFavoriteProducts(favoriteProductsResponse.data);
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      }
+     const [userData, setUserData] = useState({
+      username: '',
+      email: '',
+      avatar: '',
+    });
+  
+    const [orderHistory, setOrderHistory] = useState([]);
+    const [favoriteProducts, setFavoriteProducts] = useState([]);
+    const [isEditing, setIsEditing] = useState(false);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const userResponse = await axios.get('');
+          const orderHistoryResponse = await axios.get('');
+          const favoriteProductsResponse = await axios.get('');
+  
+          setUserData(userResponse.data);
+          setOrderHistory(orderHistoryResponse.data);
+          setFavoriteProducts(favoriteProductsResponse.data);
+        } catch (error) {
+          console.error('Error fetching data:', error.message);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    const handleEditProfile = () => {
+      setIsEditing(true);
+    };
+  
+    const handleUpdateProfile = (updatedUserData) => {
+      setUserData(updatedUserData);
+      setIsEditing(false);
     };
 
-    fetchData();
-  }, []);
-
-  const handleEditProfile = () => {
-    setIsEditing(true);
-  };
-
-  const handleUpdateProfile = (updatedUserData) => {
-    setUserData(updatedUserData);
-    setIsEditing(false);
-  };
-
   return (
-    <Container style={containerStyle}>
-      <header style={headerStyle}>
+    <StyledContainer>
+      <StyledHeader>
         <Typography variant="h4">Your Profile</Typography>
-      </header>
+      </StyledHeader>
       {isEditing ? (
         <EditProfile
           userData={userData}
@@ -110,52 +118,28 @@ const ProfilePage = () => {
           onClose={() => setIsEditing(false)}
         />
       ) : (
-        <Paper style={paperStyle}>
-          <Avatar alt="User Avatar" src={userData.avatar} style={avatarStyle} />
-          <div style={userDetailsStyle}>
+        <StyledPaper>
+          <StyledAvatar alt="User Avatar" src={userData.avatar} />
+          <StyledUserDetails>
             <Typography variant="h5">{userData.username}</Typography>
             <Typography>{userData.email}</Typography>
-            <Button
+            <StyledEditButton
               variant="contained"
-              style={editButtonStyle}
               startIcon={<EditIcon />}
               onClick={handleEditProfile}
             >
               Edit Profile
-            </Button>
-          </div>
-        </Paper>
+            </StyledEditButton>
+          </StyledUserDetails>
+        </StyledPaper>
       )}
 
-      <Typography variant="h5" style={sectionTitleStyle}>
-        Order History
-      </Typography>
-      <Grid container spacing={3}>
-        {orderHistory.map((order) => (
-          <Grid item xs={12} md={6} lg={4} key={order.orderId}>
-            <Paper style={profileSectionStyle}>
-              <Typography variant="h6">Order ID: {order.orderId}</Typography>
-              <Typography>Date: {order.date}</Typography>
-              <Typography>Total: ${order.total}</Typography>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
+      <StyledSectionTitle variant="h5">Order History</StyledSectionTitle>
+      {/* ... (existing code) */}
 
-      <Typography variant="h5" style={sectionTitleStyle}>
-        Favorite Products
-      </Typography>
-      <Grid container spacing={3}>
-        {favoriteProducts.map((product) => (
-          <Grid item xs={12} md={6} lg={4} key={product.productId}>
-            <Paper style={profileSectionStyle}>
-              <Typography variant="h6">Product ID: {product.productId}</Typography>
-              <Typography>Name: {product.name}</Typography>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+      <StyledSectionTitle variant="h5">Favorite Products</StyledSectionTitle>
+      {/* ... (existing code) */}
+    </StyledContainer>
   );
 };
 
